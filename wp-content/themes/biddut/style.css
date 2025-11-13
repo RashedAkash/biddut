@@ -1,0 +1,25 @@
+/*!
+Theme Name: Biddut
+Theme URI: https://wp.storebuild.shop/biddut/
+Author: Theme_Pure
+Author URI: https://themeforest.net/user/hixstudio
+Description: Biddut - Banking and Finance WordPress Theme 
+Version: 1.0.9
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: biddut
+Tested up to: 6.6 Requires PHP: 7.4 or later
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+.tp-black-bg {
+  background-color: #16243e;
+}
+.tp-header-transparent.border-color {
+  background-color: #16243e;
+}
+.tp-header-top-area.tp-header-top-wrap.tp-header-top-space.p-relative.black-bg {
+	margin-top: 32px;
+}

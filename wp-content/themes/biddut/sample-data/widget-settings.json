@@ -1,0 +1,99 @@
+{
+  "campaigns-sidebar": {
+    "block-5": {
+      "content": "<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Archives</h2><!-- /wp:heading --><!-- wp:archives /--></div><!-- /wp:group -->"
+    },
+    "block-6": {
+      "content": "<!-- wp:group --><div class=\"wp-block-group\"><!-- wp:heading --><h2>Categories</h2><!-- /wp:heading --><!-- wp:categories /--></div><!-- /wp:group -->"
+    }
+  },
+  "blog-sidebar": {
+    "search-2": { "title": "" },
+    "categories-2": {
+      "title": "Categories",
+      "count": 0,
+      "hierarchical": 0,
+      "dropdown": 0
+    },
+    "tp-latest-posts-2": {
+      "title": "Recent Post",
+      "count": "3",
+      "posts_order": "DESC"
+    },
+    "custom_html-2": {
+      "title": "",
+      "content": "  <div class=\"tp-sidebar-work mb-40 p-relative\" data-background=\"https://wp.storebuild.shop/biddut/wp-content/uploads/2023/08/project-3.jpg\">\r\n                           <h3 class=\"tp-sidebar-work-title text-center\">Work with us</h3>\r\n                           <div class=\"tp-sidebar-work-content text-center\">\r\n                              <div class=\"tp-sidebar-work-icon\">\r\n                                 <span><img src=\"https://wp.storebuild.shop/biddut/wp-content/uploads/2023/08/icon-1.svg\" alt=\"\"></span>\r\n                              </div>\r\n                              <p>Aliquam posuere loborti viverra atti ullamcer posuere viverra .Aliquam er.Aliquam r justo, posuere loborti viverra atti ullam</p>\r\n                           </div>\r\n                        </div>"
+    },
+    "tag_cloud-2": { "title": "Tags", "count": 0, "taxonomy": "post_tag" }
+  },
+  "tp-services-sidebar": {
+    "tp-services-list-2": {
+      "title": "Our service",
+      "count": "5",
+      "posts_order": "DESC"
+    },
+    "custom_html-8": {
+      "title": "",
+      "content": "<div class=\"tp-service-widget-contact mb-40\" style=\"background-image:url(https://wp.storebuild.shop/biddut/wp-content/uploads/2023/08/service-banner-3.jpg)\">\r\n   <div class=\"tp-service-widget-contact-content text-center\">\r\n      <div class=\"tp-service-widget-contact-icon\">\r\n         <span><i class=\"fa-solid fa-phone\"></i></span>\r\n      </div>\r\n      <p>Requesting A Call:</p>\r\n      <a href=\"tel:55555555\">000 555-0129</a>\r\n   </div>\r\n</div>"
+    },
+    "custom_html-9": {
+      "title": "",
+      "content": "<div class=\"tp-service-widget-list\">\r\n                           <div class=\"tp-service-widget-list-content\">\r\n                              <ul>\r\n                                 <li><i class=\"fa-light fa-circle-check\"></i> Mistakes To Avoid to dum </li>\r\n                                 <li><i class=\"fa-light fa-circle-check\"></i> Startup industry stan Aliquam </li>\r\n                                 <li><i class=\"fa-light fa-circle-check\"></i> Knew About Fots text posuere</li>\r\n                              </ul>\r\n                           </div>\r\n                        </div>"
+    }
+  },
+  "footer-1": {
+    "custom_html-3": {
+      "title": "",
+      "content": "<div class=\"tp-footer-widget tp-footer-2-col-1 mb-50\">\r\n                           <div class=\"tp-footer-logo mb-20\">\r\n                           <a href=\"index.html\"> <img src=\"https://wp.storebuild.shop/biddut/wp-content/uploads/2023/08/logo.png\" alt=\"\"></a>\r\n                           </div>\r\n                           <div class=\"tp-footer-widget-content\">\r\n                              <p>Payment processing is a critical component of any business that sells goods or se Payment processing is a critical component of any.</p>\r\n                              <div class=\"tp-footer-widget-social\">\r\n                                 <a href=\"#\"><i class=\"fab fa-facebook-f\"></i></a>\r\n                                 <a href=\"#\"><i class=\"fab fa-twitter\"></i></a>\r\n                                 <a href=\"#\"><i class=\"fa-brands fa-instagram\"></i></a>\r\n                              </div>\r\n                           </div>\r\n                        </div>"
+    }
+  },
+  "footer-2": { "nav_menu-2": { "title": "Quick links", "nav_menu": 5 } },
+  "footer-3": {
+    "tp-latest-posts-footer-no-thumb-2": {
+      "title": "Popular Post",
+      "count": "3",
+      "posts_order": "DESC"
+    }
+  },
+  "footer-4": {
+    "custom_html-4": {
+      "title": "Newsletter",
+      "content": "<div class=\"tp-footer-widget-content\">\r\n                              <p>It's important for businesses to carefully consider their pay.</p>\r\n                              <div class=\"tp-footer-content-email\">\r\n                                 <input type=\"email\" placeholder=\"Email Address\">\r\n                                 <button> <span><i class=\"fa-solid fa-paper-plane\"></i></span></button>\r\n                              </div>\r\n                           </div>"
+    }
+  },
+  "footer-2-1": {
+    "custom_html-5": {
+      "title": "",
+      "content": "<div class=\"tp-footer-widget tp-footer-col-1 mb-50\">\r\n                           <div class=\"tp-footer-logo mb-20\">\r\n                           <a href=\"index.html\"> <img src=\"https://wp.storebuild.shop/biddut/wp-content/uploads/2023/08/logo.png\" alt=\"\"></a>\r\n                           </div>\r\n                           <div class=\"tp-footer-widget-content\">\r\n                              <p>Payment processing is a critical component of any business that sells goods or se Payment processing is a critical component of any.</p>\r\n                              <div class=\"tp-footer-widget-social\">\r\n                                 <a href=\"#\"><i class=\"fab fa-facebook-f\"></i></a>\r\n                                 <a href=\"#\"><i class=\"fab fa-twitter\"></i></a>\r\n                                 <a href=\"#\"><i class=\"fa-brands fa-instagram\"></i></a>\r\n                                 <a href=\"#\"><i class=\"fa-brands fa-pinterest\"></i></a>\r\n                              </div>\r\n                           </div>\r\n                        </div>"
+    }
+  },
+  "footer-2-2": { "nav_menu-3": { "title": "Quick links", "nav_menu": 5 } },
+  "footer-2-3": {
+    "tp-latest-posts-footer-no-thumb-3": {
+      "title": "Popular Post",
+      "count": "3",
+      "posts_order": "DESC"
+    }
+  },
+  "footer-2-4": {
+    "custom_html-6": {
+      "title": "Contact us",
+      "content": "<div class=\"tp-footer-widget-content\">\r\n                              <div class=\"tp-footer-widget-contact\">\r\n                                 <div class=\"tp-footer-widget-contact-inner\">\r\n                                    <a href=\"https://www.google.com/maps\" target=\"_blank\"><i class=\"fa-sharp fa-solid fa-location-dot\"></i> 6391 Elgin St. Celina, 10299</a>\r\n                                 </div>\r\n                                 <div class=\"tp-footer-widget-contact-inner\">\r\n                                    <a href=\"tel:123456765\"><i class=\"fa-solid fa-phone\"></i> (629) 555-0129</a>\r\n                                 </div>\r\n                                 <div class=\"tp-footer-widget-contact-inner\">\r\n                                    <a href=\"mailto:info@example.com\"><i class=\"fa-solid fa-envelope\"></i> info@example.com</a>\r\n                                 </div>\r\n                              </div>\r\n                           </div>"
+    }
+  },
+  "footer-3-1": {
+    "custom_html-7": {
+      "title": "",
+      "content": "<div class=\"tp-footer-widget tp-footer-3-col-1 mb-50\">\r\n                              <div class=\"tp-footer-logo mb-20\">\r\n                              <a href=\"index.html\"> <img src=\"https://wp.storebuild.shop/biddut/wp-content/uploads/2023/08/logo.png\" alt=\"\"></a>\r\n                              </div>\r\n                              <div class=\"tp-footer-widget-content\">\r\n                                 <p>Don't just take our word for it hear what our customers have to say about us!</p>\r\n                                 <div class=\"tp-footer-info\">\r\n                                    <div class=\"tp-footer-info-call\">\r\n                                       <a href=\"telto:5550129\"><i class=\"fa-solid fa-phone\"></i>(629) 555-0129</a>\r\n                                    </div>\r\n                                    <div class=\"tp-footer-info-mail\">\r\n                                       <a href=\"mail:info@example.com\"><i class=\"fa-solid fa-envelope\"></i>info@example.com</a>\r\n                                    </div>\r\n                                 </div>\r\n                              </div>\r\n                           </div>"
+    }
+  },
+  "footer-3-2": { "nav_menu-4": { "title": "Useful Links", "nav_menu": 5 } },
+  "footer-3-3": { "nav_menu-5": { "title": "More Service", "nav_menu": 5 } },
+  "footer-3-4": {
+    "tp-latest-posts-footer-no-thumb-4": {
+      "title": "Popular Post",
+      "count": "3",
+      "posts_order": "DESC"
+    }
+  }
+}
