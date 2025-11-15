@@ -672,185 +672,48 @@ class TP_Pricing extends Widget_Base {
     $active_price = $settings['active_price'] ? 'active' : '';
 ?>
 
- <div class="tp-price-area pt-120 pb-90">
-    <div class="container">
-    <div class="row">
-        <div class="col-xl-12">
-            <div class="tp-price-section-box text-center mb-35">
-                <span class="tp-section-subtitle">OUR PRICING PLANS</span>
-                <h4 class="tp-section-title">Serving you 24 hours a day <br>365 days a year</h4>
-            </div>
+ <div class="tp-price-item p-relative fix <?php echo esc_attr($active_price); ?>">
+    <div class="tp-price-shape">
+        
+    <?php if($settings['tp_box_icon_type'] == 'icon') : ?>
+        <?php if (!empty($settings['tp_box_icon']) || !empty($settings['tp_box_selected_icon']['value'])) : ?>
+        <div class="tp-price__icon">
+            <?php tp_render_icon($settings, 'tp_box_icon', 'tp_box_selected_icon'); ?>
         </div>
-        <div class="col-xl-12">
-            <div class="tp-price-tab mb-100">
-                <ul class="nav nav-tab justify-content-center" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Monthly</button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Yearly</button>
-                </li>
-                </ul>
-            </div>
-        </div>               
-    </div>
-    <div class="row">
-        <div class="tp-price-wrapper">
-            <div class="col-xl-12">
-                <div class="tp-price-tab-content">
-                <div class="tab-content" id="myTabContent">
-                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                        <div class="row g-0">
-                            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                            <div class="tp-price-item">
-                                <div class="tp-price-top-box mb-20 d-flex align-items-start justify-content-between">
-                                    <span>Basic</span>
-                                    <img src="assets/img/price/icon-1.png" alt="">
-                                </div>
-                                <div class="tp-price-middle-box mb-85">
-                                    <h5 class="tp-price-middle-number">$428</h5>
-                                    <span>PER MONTH</span>
-                                </div>
-                                <div class="tp-price-list mb-35">
-                                    <ul>
-                                        <li><i class="fa-light fa-badge-check"></i>Solar panel check</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Generator inspection</li>
-                                        <li class="color"><i class="fa-light fa-badge-check"></i>Electric cable checkup</li>
-                                        <li><i class="fa-light fa-badge-check"></i>A/C inspection & servicing</li>
-                                        <li  class="color"><i class="fa-light fa-badge-check"></i>Electric equipments checkup</li>
-                                    </ul>
-                                </div>
-                                <a class="tp-btn grey-bg" href="#"><span>CHOOSE A PLAN</span></a>
-                            </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                            <div class="tp-price-item p-relative fix active">
-                                <div class="tp-price-shape">
-                                    <img src="assets/img/price/shape-1.png" alt="">
-                                </div>
-                                <div class="tp-price-top-box mb-20 d-flex align-items-start justify-content-between">
-                                    <span>Standard</span>
-                                    <img src="assets/img/price/icon-1.png" alt="">
-                                </div>
-                                <div class="tp-price-middle-box mb-85">
-                                    <h5 class="tp-price-middle-number">$520</h5>
-                                    <span>PER MONTH</span>
-                                </div>
-                                <div class="tp-price-list mb-35">
-                                    <ul>
-                                        <li><i class="fa-light fa-badge-check"></i>Solar panel check</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Generator inspection</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Electric cable checkup</li>
-                                        <li><i class="fa-light fa-badge-check"></i>A/C inspection & servicing</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Electric equipments checkup</li>
-                                    </ul>
-                                </div>
-                                <a class="tp-btn-white-lg" href="#"><span>CHOOSE A PLAN</span></a>
-                            </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                            <div class="tp-price-item">
-                                <div class="tp-price-top-box mb-20 d-flex align-items-start justify-content-between">
-                                    <span>Premium</span>
-                                    <img src="assets/img/price/icon-1.png" alt="">
-                                </div>
-                                <div class="tp-price-middle-box mb-85">
-                                    <h5 class="tp-price-middle-number">$728</h5>
-                                    <span>PER MONTH</span>
-                                </div>
-                                <div class="tp-price-list mb-35">
-                                    <ul>
-                                        <li><i class="fa-light fa-badge-check"></i>Solar panel check</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Generator inspection</li>
-                                        <li class="color"><i class="fa-light fa-badge-check"></i>Electric cable checkup</li>
-                                        <li><i class="fa-light fa-badge-check"></i>A/C inspection & servicing</li>
-                                        <li  class="color"><i class="fa-light fa-badge-check"></i>Electric equipments checkup</li>
-                                    </ul>
-                                </div>
-                                <a class="tp-btn grey-bg" href="#"><span>CHOOSE A PLAN</span></a>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                        <div class="row g-0">
-                            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                            <div class="tp-price-item">
-                                <div class="tp-price-top-box mb-20 d-flex align-items-start justify-content-between">
-                                    <span>Basic</span>
-                                    <img src="assets/img/price/icon-1.png" alt="">
-                                </div>
-                                <div class="tp-price-middle-box mb-85">
-                                    <h5 class="tp-price-middle-number">$278</h5>
-                                    <span>PER YEAR</span>
-                                </div>
-                                <div class="tp-price-list mb-35">
-                                    <ul>
-                                        <li><i class="fa-light fa-badge-check"></i>Solar panel check</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Generator inspection</li>
-                                        <li class="color"><i class="fa-light fa-badge-check"></i>Electric cable checkup</li>
-                                        <li><i class="fa-light fa-badge-check"></i>A/C inspection & servicing</li>
-                                        <li  class="color"><i class="fa-light fa-badge-check"></i>Electric equipments checkup</li>
-                                    </ul>
-                                </div>
-                                <a class="tp-btn grey-bg" href="#"><span>CHOOSE A PLAN</span></a>
-                            </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                            <div class="tp-price-item p-relative fix active">
-                                <div class="tp-price-shape">
-                                    <img src="assets/img/price/shape-1.png" alt="">
-                                </div>
-                                <div class="tp-price-top-box mb-20 d-flex align-items-start justify-content-between">
-                                    <span>Standard</span>
-                                    <img src="assets/img/price/icon-1.png" alt="">
-                                </div>
-                                <div class="tp-price-middle-box mb-85">
-                                    <h5 class="tp-price-middle-number">$912</h5>
-                                    <span>PER YEAR</span>
-                                </div>
-                                <div class="tp-price-list mb-35">
-                                    <ul>
-                                        <li><i class="fa-light fa-badge-check"></i>Solar panel check</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Generator inspection</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Electric cable checkup</li>
-                                        <li><i class="fa-light fa-badge-check"></i>A/C inspection & servicing</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Electric equipments checkup</li>
-                                    </ul>
-                                </div>
-                                <a class="tp-btn-white-lg" href="#"><span>CHOOSE A PLAN</span></a>
-                            </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
-                            <div class="tp-price-item">
-                                <div class="tp-price-top-box mb-20 d-flex align-items-start justify-content-between">
-                                    <span>Premium</span>
-                                    <img src="assets/img/price/icon-1.png" alt="">
-                                </div>
-                                <div class="tp-price-middle-box mb-85">
-                                    <h5 class="tp-price-middle-number">$428</h5>
-                                    <span>PER YEAR</span>
-                                </div>
-                                <div class="tp-price-list mb-35">
-                                    <ul>
-                                        <li><i class="fa-light fa-badge-check"></i>Solar panel check</li>
-                                        <li><i class="fa-light fa-badge-check"></i>Generator inspection</li>
-                                        <li class="color"><i class="fa-light fa-badge-check"></i>Electric cable checkup</li>
-                                        <li><i class="fa-light fa-badge-check"></i>A/C inspection & servicing</li>
-                                        <li  class="color"><i class="fa-light fa-badge-check"></i>Electric equipments checkup</li>
-                                    </ul>
-                                </div>
-                                <a class="tp-btn grey-bg" href="#"><span>CHOOSE A PLAN</span></a>
-                            </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-            </div> 
+        <?php endif; ?>
+    <?php elseif( $settings['tp_box_icon_type'] == 'image' ) : ?>
+        <?php if (!empty($settings['tp_box_icon_image']['url'])): ?>
+        <div class="tp-price__icon">
+            <img src="<?php echo $settings['tp_box_icon_image']['url']; ?>" alt="<?php echo get_post_meta(attachment_url_to_postid($settings['tp_box_icon_image']['url']), '_wp_attachment_image_alt', true); ?>">
         </div>
+        <?php endif; ?>
+    <?php else : ?>
+        <?php if (!empty($settings['tp_box_icon_svg'])): ?>
+        <div class="tp-price__icon">
+            <?php echo $settings['tp_box_icon_svg']; ?>
+        </div>
+        <?php endif; ?>
+    <?php endif; ?>
     </div>
+    <div class="tp-price-top-box mb-20 d-flex align-items-start justify-content-between">
+        <span>Standard</span>
+        <img src="assets/img/price/icon-1.png" alt="">
     </div>
+    <div class="tp-price-middle-box mb-85">
+        
+        <h5 class="tp-price-middle-number"><?php echo esc_html('Price: ', 'tpcore'); ?><?php echo esc_html($currency); ?><?php echo tp_kses($settings['price']); ?></h5>
+        <span>PER MONTH</span>
+    </div>
+    <div class="tp-price-list mb-35">
+        <ul>
+            <li><i class="fa-light fa-badge-check"></i>Solar panel check</li>
+            <li><i class="fa-light fa-badge-check"></i>Generator inspection</li>
+            <li><i class="fa-light fa-badge-check"></i>Electric cable checkup</li>
+            <li><i class="fa-light fa-badge-check"></i>A/C inspection & servicing</li>
+            <li><i class="fa-light fa-badge-check"></i>Electric equipments checkup</li>
+        </ul>
+    </div>
+    <a class="tp-btn-white-lg" href="#"><span>CHOOSE A PLAN</span></a>
 </div>
 
 <div class="tp-price__item <?php echo esc_attr($active_price); ?> p-relative">

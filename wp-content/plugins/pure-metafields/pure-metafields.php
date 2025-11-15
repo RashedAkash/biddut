@@ -1,5 +1,4 @@
 <?php
-
 /**
  * The plugin bootstrap file
  *
@@ -9,14 +8,14 @@
  * that starts the plugin.
  *
  * @link              https://themepure.net
- * @since             1.4.4
+ * @since             1.4.6
  * @package           tpmeta
  *
  * @wordpress-plugin
  * Plugin Name:       Pure Metafields
  * Plugin URI:        https://themepure.net/plugins/puremetafields/files/pure-metafields.zip
  * Description:       Plugin For Custom Metabox To Attach To Any Post Types.
- * Version:           1.4.4
+ * Version:           1.4.6
  * Author:            ThemePure
  * Author URI:        https://themepure.net
  * License:           GPL-2.0+
@@ -30,7 +29,7 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'TPMETA_VERSION', '1.4.4' );
+define( 'TPMETA_VERSION', '1.4.6' );
 define( 'TPMETA_PATH', plugin_dir_path(__FILE__) );
 define( 'TPMETA_URL', plugin_dir_url(__FILE__) );
 

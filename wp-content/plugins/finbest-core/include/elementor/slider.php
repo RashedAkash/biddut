@@ -176,6 +176,8 @@ class TP_Slider extends Widget_Base {
                 'options' => [
                     'layout-1' => esc_html__('Layout 1', 'tpcore'),
                     'layout-2' => esc_html__('Layout 2', 'tpcore'),
+                    'layout-3' => esc_html__('Layout 3', 'tpcore'),
+                    'layout-4' => esc_html__('Layout 4', 'tpcore'),
                 ],
                 'default' => 'layout-1',
             ]
@@ -210,85 +212,16 @@ class TP_Slider extends Widget_Base {
             ]
         );
 
-
         $repeater->add_control(
-            'tp_box_icon_type',
+            'tp_slider_image',
             [
-                'label' => esc_html__('Select Icon Type', 'tpcore'),
-                'type' => \Elementor\Controls_Manager::SELECT,
-                'default' => 'image',
-                'options' => [
-                    'image' => esc_html__('Image', 'tpcore'),
-                    'icon' => esc_html__('Icon', 'tpcore'),
-                    'svg' => esc_html__('SVG', 'tpcore'),
-                ],
-                'condition' => [
-                    'repeater_condition' => ['style_3'],
-                ]
-            ]
-        );
-        $repeater->add_control(
-            'tp_box_icon_svg',
-            [
-                'show_label' => false,
-                'type' => Controls_Manager::TEXTAREA,
-                'label_block' => true,
-                'placeholder' => esc_html__('SVG Code Here', 'tpcore'),
-                'condition' => [
-                    'tp_box_icon_type' => 'svg',
-                    'repeater_condition' => ['style_3'],
-                ]
-            ]
-        );
-
-        $repeater->add_control(
-            'tp_box_icon_image',
-            [
-                'label' => esc_html__('Upload Icon Image', 'tpcore'),
+                'label' => esc_html__('Upload Background Image', 'tpcore'),
                 'type' => Controls_Manager::MEDIA,
                 'default' => [
                     'url' => Utils::get_placeholder_image_src(),
                 ],
-                'condition' => [
-                    'tp_box_icon_type' => 'image',
-                    'repeater_condition' => ['style_3'],
-                ]
             ]
         );
-
-        if (tp_is_elementor_version('<', '2.6.0')) {
-            $repeater->add_control(
-                'tp_box_icon',
-                [
-                    'show_label' => false,
-                    'type' => Controls_Manager::ICON,
-                    'label_block' => true,
-                    'default' => 'fa fa-star',
-                    'condition' => [
-                        'tp_box_icon_type' => 'icon',
-                        'repeater_condition' => ['style_3'],
-                    ]
-                ]
-            );
-        } else {
-            $repeater->add_control(
-                'tp_box_selected_icon',
-                [
-                    'show_label' => false,
-                    'type' => Controls_Manager::ICONS,
-                    'fa4compatibility' => 'icon',
-                    'label_block' => true,
-                    'default' => [
-                        'value' => 'fas fa-star',
-                        'library' => 'solid',
-                    ],
-                    'condition' => [
-                        'tp_box_icon_type' => 'icon',
-                        'repeater_condition' => ['style_3'],
-                    ]
-                ]
-            );
-        }
 
         $repeater->add_control(
             'tp_slider_sub_title',
@@ -301,6 +234,7 @@ class TP_Slider extends Widget_Base {
                 'label_block' => true,
             ]
         );
+
         $repeater->add_control(
             'tp_slider_title',
             [
@@ -310,41 +244,6 @@ class TP_Slider extends Widget_Base {
                 'default' => esc_html__('Grow business.', 'tpcore'),
                 'placeholder' => esc_html__('Type Heading Text', 'tpcore'),
                 'label_block' => true,
-            ]
-        );
-        $repeater->add_control(
-            'tp_slider_title_tag',
-            [
-                'label' => esc_html__('Title HTML Tag', 'tpcore'),
-                'type' => Controls_Manager::CHOOSE,
-                'options' => [
-                    'h1' => [
-                        'title' => esc_html__('H1', 'tpcore'),
-                        'icon' => 'eicon-editor-h1'
-                    ],
-                    'h2' => [
-                        'title' => esc_html__('H2', 'tpcore'),
-                        'icon' => 'eicon-editor-h2'
-                    ],
-                    'h3' => [
-                        'title' => esc_html__('H3', 'tpcore'),
-                        'icon' => 'eicon-editor-h3'
-                    ],
-                    'h4' => [
-                        'title' => esc_html__('H4', 'tpcore'),
-                        'icon' => 'eicon-editor-h4'
-                    ],
-                    'h5' => [
-                        'title' => esc_html__('H5', 'tpcore'),
-                        'icon' => 'eicon-editor-h5'
-                    ],
-                    'h6' => [
-                        'title' => esc_html__('H6', 'tpcore'),
-                        'icon' => 'eicon-editor-h6'
-                    ]
-                ],
-                'default' => 'h2',
-                'toggle' => false,
             ]
         );
 
@@ -359,25 +258,38 @@ class TP_Slider extends Widget_Base {
             ]
         );
 
-
         $repeater->add_control(
-         'tp_slider_background_text',
-         [
-           'label'   => esc_html__( 'Backround Text', 'tpcore' ),
-           'default' => 'POOREX',
-           'type'    => \Elementor\Controls_Manager::TEXT,
-           'condition' => [
-                'repeater_condition' => 'style_2'
+            'tp_slider_video_text',
+            [
+                'label' => esc_html__('Video Text', 'tpcore'),
+                'description' => tp_get_allowed_html_desc( 'intermediate' ),
+                'type' => Controls_Manager::TEXTAREA,
+                'default' => esc_html__('Watch Our Showcase', 'tpcore'),
+                'placeholder' => esc_html__('Type section description here', 'tpcore'),
+                'condition' => [
+                    'repeater_condition' => 'style_2',
+                ],
             ]
-         ]
         );
-
+        $repeater->add_control(
+            'tp_slider_video_url',
+            [
+                'label' => esc_html__('Video URL', 'tpcore'),
+                'description' => tp_get_allowed_html_desc( 'intermediate' ),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('#', 'tpcore'),
+                'placeholder' => esc_html__('Video url here here', 'tpcore'),
+                'condition' => [
+                    'repeater_condition' => 'style_2',
+                ],
+            ]
+        );
 
         
 		$repeater->add_control(
             'tp_slider_shape_switch',
             [
-                'label' => esc_html__( 'Enable Shape ?', 'tpcore' ),
+                'label' => esc_html__( 'Enable Inner Shape ?', 'tpcore' ),
                 'type' => \Elementor\Controls_Manager::SWITCHER,
                 'label_on' => esc_html__( 'Yes', 'tpcore' ),
                 'label_off' => esc_html__( 'No', 'tpcore' ),
@@ -389,45 +301,7 @@ class TP_Slider extends Widget_Base {
                 ],
             ]
         );
-        
-		$repeater->add_control(
-            'tp_slider_bubble_switch',
-            [
-                'label' => esc_html__( 'Enable Bubble ?', 'tpcore' ),
-                'type' => \Elementor\Controls_Manager::SWITCHER,
-                'label_on' => esc_html__( 'Yes', 'tpcore' ),
-                'label_off' => esc_html__( 'No', 'tpcore' ),
-                'return_value' => 'yes',
-                'default' => 'no',
-                'separator' => 'before',
-                'condition' => [
-                    'repeater_condition' => 'style_2',
-                ],
-            ]
-        );
 
-        $repeater->add_control(
-            'tp_slider_number',
-            [
-                'label' => esc_html__('Number Text', 'tpcore'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('Number', 'tpcore'),
-                'title' => esc_html__('0125485546 ', 'tpcore'),
-                'label_block' => true,
-           
-            ]
-        );
-       
-        $repeater->add_control(
-            'tp_bg_image',
-            [
-                'label' => esc_html__( 'Choose Image', 'tp-core' ),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),
             [
@@ -450,18 +324,6 @@ class TP_Slider extends Widget_Base {
                 'return_value' => 'yes',
                 'default' => 'yes',
                 'separator' => 'before',
-            ]
-        );
-
-        $repeater->add_control(
-            'tp_slider_category',
-            [
-                'label' => esc_html__('Slider Category', 'tpcore'),
-                'description' => tp_get_allowed_html_desc( 'intermediate' ),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('technology', 'tpcore'),
-                'placeholder' => esc_html__('Type Slider Category', 'tpcore'),
-                'label_block' => true,
             ]
         );
 
@@ -550,6 +412,43 @@ class TP_Slider extends Widget_Base {
                 'title_field' => '{{{ tp_slider_title }}}',
             ]
         );
+
+        $this->add_control(
+            'tp_slider_title_tag',
+            [
+                'label' => esc_html__('Title HTML Tag', 'tpcore'),
+                'type' => Controls_Manager::CHOOSE,
+                'options' => [
+                    'h1' => [
+                        'title' => esc_html__('H1', 'tpcore'),
+                        'icon' => 'eicon-editor-h1'
+                    ],
+                    'h2' => [
+                        'title' => esc_html__('H2', 'tpcore'),
+                        'icon' => 'eicon-editor-h2'
+                    ],
+                    'h3' => [
+                        'title' => esc_html__('H3', 'tpcore'),
+                        'icon' => 'eicon-editor-h3'
+                    ],
+                    'h4' => [
+                        'title' => esc_html__('H4', 'tpcore'),
+                        'icon' => 'eicon-editor-h4'
+                    ],
+                    'h5' => [
+                        'title' => esc_html__('H5', 'tpcore'),
+                        'icon' => 'eicon-editor-h5'
+                    ],
+                    'h6' => [
+                        'title' => esc_html__('H6', 'tpcore'),
+                        'icon' => 'eicon-editor-h6'
+                    ]
+                ],
+                'default' => 'h2',
+                'toggle' => false,
+            ]
+        );
+
         $this->add_group_control(
             Group_Control_Image_Size::get_type(),
             [
@@ -558,38 +457,54 @@ class TP_Slider extends Widget_Base {
                 // 'default' => 'tp-portfolio-thumb',
             ]
         );
+
+        $this->add_control(
+            'tp_slider_shape_icon_switch',
+            [
+                'label' => esc_html__( 'Enable Shape ?', 'tpcore' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Yes', 'tpcore' ),
+                'label_off' => esc_html__( 'No', 'tpcore' ),
+                'return_value' => 'yes',
+                'default' => 'no',
+                'separator' => 'before',
+            ]
+        );
+
         $this->end_controls_section();
 
 
         $this->start_controls_section(
-            'tp_Scroll',
+            'tp_scroll_section',
             [
-                'label' => esc_html__('SCROLL DOWN', 'tpcore'),
+                'label' => esc_html__('Scroll', 'tpcore'),
                 'description' => esc_html__( 'Control all the style settings from Style tab', 'tpcore' ),
                 'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+                'condition' => [
+                    'tp_design_style' => ['layout-1','layout-4'],
+                ]
             ]
         );
 
-            $this->add_control(
-            'tp_scroll_link',
-            [
-                'label' => esc_html__('SCROLL URL', 'tpcore'),
-                'type' => Controls_Manager::TEXT,
-                'default' => esc_html__('#', 'tpcore'),
-                'title' => esc_html__('Enter SCROLL URL', 'tpcore'),
-                'label_block' => true,
-                
-            ]
-        );
-            $this->add_control(
+        $this->add_control(
             'tp_scroll_text',
             [
                 'label' => esc_html__('Scroll Text', 'tpcore'),
                 'type' => Controls_Manager::TEXT,
                 'default' => esc_html__('SCROLL DOWN', 'tpcore'),
-                'title' => esc_html__('Enter SCROLL DOWN text', 'tpcore'),
+                'title' => esc_html__('Enter scroll text', 'tpcore'),
                 'label_block' => true,
-               
+            ]
+        );        
+
+        $this->add_control(
+            'tp_scroll_url',
+            [
+                'label' => esc_html__('Scroll URL', 'tpcore'),
+                'type' => Controls_Manager::TEXT,
+                'default' => esc_html__('#', 'tpcore'),
+                'title' => esc_html__('Enter scroll url', 'tpcore'),
+                'label_block' => true,
             ]
         );
 
@@ -600,7 +515,7 @@ class TP_Slider extends Widget_Base {
 
     
     protected function style_tab_content(){
-        $this->tp_section_style_controls('slider_section', 'Section Style', '.tp-el-section');
+        $this->tp_section_style_controls('slider_section', 'Section Style', '.ele-section');
         $this->tp_basic_style_controls('slider_subtitle', 'Subtitle Style', '.ele-sub-title');
         $this->tp_basic_style_controls('slider_title', 'Title Style', '.ele-title');
         $this->tp_basic_style_controls('slider_des', 'Description Style', '.ele-des');
@@ -623,70 +538,213 @@ class TP_Slider extends Widget_Base {
 		?>
 
 <?php if ( $settings['tp_design_style']  == 'layout-2' ): ?>
+  <div class="tp-slider-2-area p-relative">
+    <?php if (!empty($settings['tp_slider_shape_icon_switch'])) : ?> 
+     <div class="tp-slider-2-shape-3">
+        <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-2-3.png" alt="">
+     </div>
+     <?php endif; ?>
+     <div class="tp-slider-2-wrapper p-relative">
+        <div class="tp-slider-2-arrow-box">
+           <button class="slider-next">
+              <i class="fa-regular fa-arrow-right-long"></i>
+           </button>
+           <button class="slider-prev active">
+              <i class="fa-regular fa-arrow-left-long"></i>
+           </button>
+       </div>
+       <div class="tp-slider-dots"></div>
+        <div class="swiper-container tp-slider-2-active">
+           <div class="swiper-wrapper">
+            <?php foreach ($settings['slider_list'] as $item) : 
+                $this->add_render_attribute('title_args', 'class', 'tp-slider-2-title mb-40');
 
+                if ( !empty($item['tp_slider_image']['url']) ) {
+                    $tp_slider_image_url = !empty($item['tp_slider_image']['id']) ? wp_get_attachment_image_url( $item['tp_slider_image']['id'], $settings['thumbnail_size']) : $item['tp_slider_image']['url'];
+                    $tp_slider_image_alt = get_post_meta($item["tp_slider_image"]["id"], "_wp_attachment_image_alt", true);
+                }
 
+                // btn Link
+                if ('2' == $item['tp_btn_link_type']) {
+                    $link = get_permalink($item['tp_btn_page_link']);
+                    $target = '_self';
+                    $rel = 'nofollow';
+                } else {
+                    $link = !empty($item['tp_btn_link']['url']) ? $item['tp_btn_link']['url'] : '';
+                    $target = !empty($item['tp_btn_link']['is_external']) ? '_blank' : '';
+                    $rel = !empty($item['tp_btn_link']['nofollow']) ? 'nofollow' : '';
+                }
+            ?>
+              <div class="swiper-slide">
+                 <div class="tp-slider-2-height p-relative">
+                    <?php if (!empty($item['tp_slider_shape_switch'])) : ?> 
+                    <div class="tp-slider-2-shape-1">
+                       <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-2-1.png" alt="">
+                    </div>
+                    <div class="tp-slider-2-shape-2 d-none d-xl-block">
+                       <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-2-2.png" alt="">
+                    </div>
+                    <?php endif; ?>
+                    <div class="tp-slider-2-bg" style="background-image: url(<?php echo esc_url($tp_slider_image_url); ?>);"></div>
+                    <div class="container">
+                       <div class="row">
+                          <div class="col-xl-12">
+                             <div class="tp-slider-2-content z-index-3">
+                                <div class="tp-slider-2-title-box">
+  
+                                   <?php if (!empty($item['tp_slider_sub_title'])) : ?> 
+                                   <span class="tp-slider-2-subtitle"><?php echo tp_kses($item['tp_slider_sub_title']); ?></span>
+                                    <?php endif; ?>
 
+                                    <?php
+                                    if ($settings['tp_slider_title_tag']) :
+                                        printf('<%1$s %2$s>%3$s</%1$s>',
+                                            tag_escape($settings['tp_slider_title_tag']),
+                                            $this->get_render_attribute_string('title_args'),
+                                            tp_kses($item['tp_slider_title'])
+                                        );
+                                    endif; ?>
 
+                                    <?php if (!empty($item['tp_slider_description'])) : ?>
+                                    <p><?php echo tp_kses($item['tp_slider_description']); ?></p>
+                                    <?php endif; ?>
+                                </div>
+                                <div class="tp-slider-2-play-box d-flex align-items-center">
+                                    <?php if(!empty($link)) : ?>
+                                    <a class="tp-btn hover-2" rel="<?php echo esc_attr($rel); ?>" target="<?php echo esc_attr($target); ?>" href="<?php echo esc_url($link); ?>"><span><?php echo tp_kses($item['tp_btn_btn_text']); ?></span></a>
+                                    <?php endif; ?>
 
-<?php else: 
-    if ( !empty($settings['tp_image']['url']) ) {
-        $tp_image = !empty($settings['tp_image']['id']) ? wp_get_attachment_image_url( $settings['tp_image']['id'], $settings['tp_image_size_size']) : $settings['tp_image']['url'];
-        $tp_image_alt = get_post_meta($settings["tp_image"]["id"], "_wp_attachment_image_alt", true);
-    }
+                                   <?php if(!empty($item['tp_slider_video_url'])) : ?> 
+                                   <div class="tp-slider-2-play-icon d-flex align-items-center">
+                                      <a class="popup-video" href="<?php echo esc_url($item['tp_slider_video_url']); ?>"><i class="fas fa-play"></i></a>
 
+                                      <div class="tp-slider-2-play-text">
+                                         <span><?php echo tp_kses($item['tp_slider_video_text']); ?></span>
+                                      </div>
+                                   </div>
+                                   <?php endif; ?>
+                                </div>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+            <?php endforeach; ?>  
+           </div>
+        </div>
+     </div>
+  </div>
 
-    if ( ! empty( $settings['tp_slider_mouse_link']['url'] ) ) {
-        $this->add_link_attributes( 'tp-button-text-arg', $settings['tp_slider_mouse_link'] );
-        $this->add_link_attributes( 'tp-button-arg', $settings['tp_slider_mouse_link'] );
-        $this->add_render_attribute('tp-button-arg', 'class', 'mouse-scroll-icon mouse-scroll-icon-4');
-    }
-    $bloginfo = get_bloginfo( 'name' );
-?>
+<?php elseif ( $settings['tp_design_style']  == 'layout-3' ): ?>
+<div class="tp-slider-area z-index p-relative">
+ <div class="tp-slider-arrow-box">
+    <button class="slider-prev">
+       <i class="fa-regular fa-arrow-left-long"></i>
+    </button>
+    <button class="slider-next active">
+       <i class="fa-regular fa-arrow-right-long"></i>
+    </button>
+ </div>
+ <div class="tp-slider-wrapper">
+    <div class="swiper-container tp-slider-active">
+       <div class="swiper-wrapper">
+            <?php foreach ($settings['slider_list'] as $item) : 
+                $this->add_render_attribute('title_args', 'class', 'tp-slider-title');
 
-  <!-- hero area start -->
-      <div class="tp-slider-3-area  black-bg p-relative">
+                if ( !empty($item['tp_slider_image']['url']) ) {
+                    $tp_slider_image_url = !empty($item['tp_slider_image']['id']) ? wp_get_attachment_image_url( $item['tp_slider_image']['id'], $settings['thumbnail_size']) : $item['tp_slider_image']['url'];
+                    $tp_slider_image_alt = get_post_meta($item["tp_slider_image"]["id"], "_wp_attachment_image_alt", true);
+                }
 
-        <?php if(!empty($settings['tp_scroll_link'])): ?>
-         <div class="tp-scroll-bottom smooth d-none d-md-block">            
-            <a href="#<?php echo esc_url($settings['tp_scroll_link']); ?>"><?php echo esc_html($settings['tp_scroll_text']); ?></a>
+                // btn Link
+                if ('2' == $item['tp_btn_link_type']) {
+                    $link = get_permalink($item['tp_btn_page_link']);
+                    $target = '_self';
+                    $rel = 'nofollow';
+                } else {
+                    $link = !empty($item['tp_btn_link']['url']) ? $item['tp_btn_link']['url'] : '';
+                    $target = !empty($item['tp_btn_link']['is_external']) ? '_blank' : '';
+                    $rel = !empty($item['tp_btn_link']['nofollow']) ? 'nofollow' : '';
+                }
+            ?>
+          <div class="swiper-slide">
+             <div class="tp-slider-height tp-slider-overly">
+                <?php if (!empty($item['tp_slider_shape_switch'])) : ?> 
+                <div class="tp-slider-shape-2 d-none d-xl-block">
+                   <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/bg-1-2.png" alt="">
+                </div>
+                <div class="tp-slider-shape-3 d-none d-md-block">
+                   <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/bg-1-3.png" alt="">
+                </div>
+                <?php endif; ?>
+                <div class="tp-slider-bg" style="background-image: url(<?php echo esc_url($tp_slider_image_url); ?>);"></div>
+                <div class="container z-index-5">
+                   <div class="row">
+                      <div class="col-xl-8 col-lg-8">
+                         <div class="tp-slider-content">
+                            <div class="tp-slider-title-box">  
+                               <?php if (!empty($item['tp_slider_sub_title'])) : ?> 
+                               <span class="tp-slider-2-subtitle pb-5"><?php echo tp_kses($item['tp_slider_sub_title']); ?></span>
+                                <?php endif; ?>
+
+                                <?php
+                                if ($settings['tp_slider_title_tag']) :
+                                    printf('<%1$s %2$s>%3$s</%1$s>',
+                                        tag_escape($settings['tp_slider_title_tag']),
+                                        $this->get_render_attribute_string('title_args'),
+                                        tp_kses($item['tp_slider_title'])
+                                    );
+                                endif; ?>
+                            </div>
+                            <div class="tp-slider-text">
+                                <?php if (!empty($item['tp_slider_description'])) : ?>
+                                <p><?php echo tp_kses($item['tp_slider_description']); ?></p>
+                                <?php endif; ?>
+                                 <?php if(!empty($link)) : ?>
+                                    <a class="tp-btn" rel="<?php echo esc_attr($rel); ?>" target="<?php echo esc_attr($target); ?>" href="<?php echo esc_url($link); ?>"><span><?php echo tp_kses($item['tp_btn_btn_text']); ?></span></a>
+                               <?php endif; ?>
+                            </div>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+          <?php endforeach; ?>
+       </div>
+    </div>
+ </div>
+</div>
+
+<?php elseif ( $settings['tp_design_style']  == 'layout-4' ): ?>
+      <div class="tp-slider-4-area p-relative">
+        <?php if (!empty($settings['tp_scroll_url'])) : ?> 
+         <div class="tp-scroll-bottom-2 smooth">
+            <a href="#<?php echo esc_attr($settings['tp_scroll_url']); ?>"><i class="flaticon-arrow-down"></i> <?php echo esc_attr($settings['tp_scroll_text']); ?></a>
          </div>
          <?php endif; ?>
 
-         <div class="tp-slider-3-wrapper fix p-relative">
-            <div class="tp-slider-3-arrow-box">
-               <button class="slider-prev active">
-                  <i class="fa-regular fa-arrow-left-long"></i>
+         <div class="tp-slider-4-wrapper p-relative">
+            <div class="tp-slider-4-arrow-box">
+               <button class="slider-prev">
+                  <i class="fal fa-angle-left"></i>
                </button>
                <button class="slider-next">
-                  <i class="fa-regular fa-arrow-right-long"></i>
+                  <i class="fal fa-angle-right"></i>
                </button>
            </div>
-           <div class="tp-slider-dots dots-color"></div>
-            <div class="swiper-container tp-slider-3-active">
+            <div class="swiper-container tp-slider-4-active">
                <div class="swiper-wrapper">
-                <?php foreach ($settings['slider_list'] as $item) :?>
-                <?php if ($item['tp_slider_shape_switch']) :?>
-                  <div class="tp-slider-3-shape-2 d-none d-sm-block">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-3-2.png" alt="">
-                  </div>
-                  <div class="tp-slider-3-shape-3 d-none d-md-block">
-                     <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-3-3.png" alt="">
-                  </div>
-                  <?php endif; ?> 
-                  <?php endforeach; ?>
-                  
+                <?php foreach ($settings['slider_list'] as $item) : 
+                    $this->add_render_attribute('title_args', 'class', 'tp-slider-3-title mb-55');
 
-                  <?php foreach ($settings['slider_list'] as $item) : 
-                $this->add_render_attribute('title_args', 'class', 'tp-slider-3-title mb-40 ele-title');
+                    if ( !empty($item['tp_slider_image']['url']) ) {
+                        $tp_slider_image_url = !empty($item['tp_slider_image']['id']) ? wp_get_attachment_image_url( $item['tp_slider_image']['id'], $settings['thumbnail_size']) : $item['tp_slider_image']['url'];
+                        $tp_slider_image_alt = get_post_meta($item["tp_slider_image"]["id"], "_wp_attachment_image_alt", true);
+                    }
 
-                $numericPart = preg_replace("/[^0-9]/", "", $item['tp_slider_number']);  
-
-                // Img
-                if ( !empty($item['tp_bg_image']['url']) ) {
-                    $tp_bg_image = !empty($item['tp_bg_image']['id']) ? wp_get_attachment_image_url( $item['tp_bg_image']['id'], $settings['tp_image_size_size']) : $item['tp_bg_image']['url'];
-                    $tp_image_alt = get_post_meta($item["tp_bg_image"]["id"], "_wp_attachment_image_alt", true);
-                } 
-                  // btn Link
+                    // btn Link
                     if ('2' == $item['tp_btn_link_type']) {
                         $link = get_permalink($item['tp_btn_page_link']);
                         $target = '_self';
@@ -698,56 +756,149 @@ class TP_Slider extends Widget_Base {
                     }
                 ?>
                   <div class="swiper-slide">
-                     <div class="tp-slider-3-height p-relative">
-                        <div class="tp-slider-3-shape-1 d-none d-xl-block">
-                           <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-3-1.png" alt="">
-                        </div>
-                        <div class="tp-slider-3-bg" style="background-image: url('<?php echo $tp_bg_image  ?>" ></div>
+                     <div class="tp-slider-4-height">
+                        <div class="tp-slider-4-bg" style="background-image: url(<?php echo esc_url($tp_slider_image_url); ?>);"></div>
                         <div class="container">
                            <div class="row">
-                              <div class="col-xl-12">
-                                 <div class="tp-slider-3-content z-index-3">
-                                    <div class="tp-slider-3-title-box">
-
-                                        <?php if($item['tp_slider_sub_title']): ?>
+                              <div class="col-xl-12">                  
+                                 <div class="tp-slider-4-content text-center z-index-3">
+                                    <div class="tp-slider-4-title-box">
+                                       <?php if (!empty($item['tp_slider_sub_title'])) : ?> 
                                        <span class="tp-slider-2-subtitle pb-5"><?php echo tp_kses($item['tp_slider_sub_title']); ?></span>
-                                       <?php endif; ?>
-
-                                      
-                                       <?php
-                                            if ($item['tp_slider_title_tag']) :
-                                                printf('<%1$s %2$s>%3$s</%1$s>',
-                                                    tag_escape($item['tp_slider_title_tag']),
-                                                    $this->get_render_attribute_string('title_args'),
-                                                    tp_kses($item['tp_slider_title'])
-                                                );
-                                            endif; ?>
-
-                                    </div>
-
-                                    <?php if (!empty($link)) : ?>
-                                        <div class="tp-slider-3-button">
-                                            <a class="tp-btn hover-2" href="<?php echo esc_url($link); ?>" target="<?php echo esc_attr($target); ?>"
-                                            rel="<?php echo esc_attr($rel); ?>">
-                                            <?php echo tp_kses($item['tp_btn_btn_text']); ?>
-                                            </a>
-                                        </div>
                                         <?php endif; ?>
 
-                                    
+                                        <?php
+                                        if ($settings['tp_slider_title_tag']) :
+                                            printf('<%1$s %2$s>%3$s</%1$s>',
+                                                tag_escape($settings['tp_slider_title_tag']),
+                                                $this->get_render_attribute_string('title_args'),
+                                                tp_kses($item['tp_slider_title'])
+                                            );
+                                        endif; ?>
+                                        <?php if (!empty($item['tp_slider_description'])) : ?>
+                                        <p><?php echo tp_kses($item['tp_slider_description']); ?></p>
+                                        <?php endif; ?>
+                                    </div>
+                                    <?php if(!empty($link)) : ?>
+                                    <div class="tp-slider-4-button">
+                                       <a class="tp-btn hover-2" rel="<?php echo esc_attr($rel); ?>" target="<?php echo esc_attr($target); ?>" href="<?php echo esc_url($link); ?>"><span><?php echo tp_kses($item['tp_btn_btn_text']); ?></span></a>
+                                    </div>
+                                    <?php endif; ?>
                                  </div>
                               </div>
                            </div>
                         </div>
                      </div>
                   </div>
-                  <?php endforeach; ?>
+                <?php endforeach; ?>  
                </div>
             </div>
-         </div>
+         </div> 
       </div>
-      <!-- hero area end -->
 
+
+<?php else: ?>
+
+  <div class="tp-slider-3-area  black-bg p-relative">
+    <?php if (!empty($settings['tp_scroll_url'])) : ?> 
+     <div class="tp-scroll-bottom smooth d-none d-md-block">
+        <a href="#<?php echo esc_attr($settings['tp_scroll_url']); ?>"><?php echo esc_attr($settings['tp_scroll_text']); ?></a>
+     </div>
+     <?php endif; ?>
+
+     <div class="tp-slider-3-wrapper fix p-relative">
+        <div class="tp-slider-3-arrow-box">
+           <button class="slider-prev active">
+              <i class="fa-regular fa-arrow-left-long"></i>
+           </button>
+           <button class="slider-next">
+              <i class="fa-regular fa-arrow-right-long"></i>
+           </button>
+       </div>
+       <div class="tp-slider-dots dots-color"></div>
+        <div class="swiper-container tp-slider-3-active">
+           <div class="swiper-wrapper">
+              <?php if (!empty($settings['tp_slider_shape_icon_switch'])) : ?> 
+              <div class="tp-slider-3-shape-2 d-none d-sm-block">
+                 <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-3-2.png" alt="">
+              </div>
+              <div class="tp-slider-3-shape-3 d-none d-md-block">
+                 <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-3-3.png" alt="">
+              </div>
+              <?php endif; ?>
+
+                <?php foreach ($settings['slider_list'] as $index => $item) : 
+                $this->add_render_attribute('title_args', 'class', 'tp-slider-3-title mb-40');
+
+                
+
+                if ( !empty($item['tp_slider_image']['url']) ) {
+                    $tp_slider_image_url = !empty($item['tp_slider_image']['id']) ? wp_get_attachment_image_url( $item['tp_slider_image']['id'], $settings['thumbnail_size']) : $item['tp_slider_image']['url'];
+                    $tp_slider_image_alt = get_post_meta($item["tp_slider_image"]["id"], "_wp_attachment_image_alt", true);
+                }
+
+
+                // $item_role = $this->get_repeater_setting_key( 'tp_btn_link', 'slider_list', $index );
+                // $this->add_link_attributes( 'tp_btn_link', $item_role['tp_btn_link'] );
+                // var_dump($item_role);
+
+                // btn Link
+                if ('2' == $item['tp_btn_link_type']) {
+                    $link = get_permalink($item['tp_btn_page_link']);
+                    $target = '_self';
+                    $rel = 'nofollow';
+                } else {
+                    $link = !empty($item['tp_btn_link']['url']) ? $item['tp_btn_link']['url'] : '';
+                    $target = !empty($item['tp_btn_link']['is_external']) ? '_blank' : '';
+                    $rel = !empty($item['tp_btn_link']['nofollow']) ? 'nofollow' : '';
+                }
+            ?>
+              <div class="swiper-slide">
+                 <div class="tp-slider-3-height p-relative">
+                    <?php if (!empty($item['tp_slider_shape_switch'])) : ?> 
+                    <div class="tp-slider-3-shape-1 d-none d-xl-block">
+                       <img src="<?php echo get_template_directory_uri(); ?>/assets/img/hero/shape-3-1.png" alt="">
+                    </div>
+                    <?php endif; ?>
+
+                    <div class="tp-slider-3-bg" style="background-image: url(<?php echo esc_url($tp_slider_image_url); ?>);"></div>
+                    <div class="container">
+                       <div class="row">
+                          <div class="col-xl-12">
+                             <div class="tp-slider-3-content z-index-3">
+                                <div class="tp-slider-3-title-box">
+                                   <?php if (!empty($item['tp_slider_sub_title'])) : ?> 
+                                   <span class="tp-slider-2-subtitle pb-5"><?php echo tp_kses($item['tp_slider_sub_title']); ?></span>
+                                    <?php endif; ?>
+
+                                    <?php
+                                    if ($settings['tp_slider_title_tag']) :
+                                        printf('<%1$s %2$s>%3$s</%1$s>',
+                                            tag_escape($settings['tp_slider_title_tag']),
+                                            $this->get_render_attribute_string('title_args'),
+                                            tp_kses($item['tp_slider_title'])
+                                        );
+                                    endif; ?>
+                                    <?php if (!empty($item['tp_slider_description'])) : ?>
+                                    <p><?php echo tp_kses($item['tp_slider_description']); ?></p>
+                                    <?php endif; ?>
+                                </div>
+                                <?php if(!empty($link)) : ?>
+                                <div class="tp-slider-3-button">
+                                   <a class="tp-btn hover-2" rel="<?php echo esc_attr($rel); ?>" target="<?php echo esc_attr($target); ?>" href="<?php echo esc_url($link); ?>"><span><?php echo tp_kses($item['tp_btn_btn_text']); ?></span></a>
+                                </div>
+                                <?php endif; ?>
+                             </div>
+                          </div>
+                       </div>
+                    </div>
+                 </div>
+              </div>
+             <?php endforeach; ?>
+           </div>
+        </div>
+     </div>
+  </div>
 
 
 

@@ -37,7 +37,7 @@ class tpmeta_meta_box {
 	public function tpmeta_load_metabox_scripts(){
 		// css
 		wp_enqueue_style( 'wp-color-picker');
-		wp_enqueue_style( 'jquery-ui', TPMETA_URL . 'metaboxes/css/jquery-ui.min.css', array(), time(), 'all');
+		// wp_enqueue_style( 'jquery-ui', TPMETA_URL . 'metaboxes/css/jquery-ui.min.css', array(), time(), 'all');
 		wp_enqueue_style( 'select2', TPMETA_URL . 'metaboxes/css/select2.min.css', array(), time(), 'all');
 		wp_enqueue_style( 'dragula', TPMETA_URL . 'metaboxes/css/dragula.min.css', array(), time(), 'all');
 		wp_enqueue_style( 'tm-metabox-css', TPMETA_URL . 'metaboxes/css/puremeta-style.css', array(),  time(), 'all');
