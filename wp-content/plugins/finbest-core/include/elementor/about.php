@@ -504,56 +504,58 @@ class TP_About extends Widget_Base {
             ]
         );
         $this->end_controls_section();
+        
+        
+                // exp section
+                $this->start_controls_section(
+                    'tp_exp_section',
+                        [
+                        'label' => esc_html__( 'Exp', 'tpcore' ),
+                        'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                        'condition' => [
+                            'tp_design_style' => 'layout-1'
+                        ]
+                    ]
+                );
 
-        // client section
-        $this->start_controls_section(
-            'tp_about_client',
-                [
-                'label' => esc_html__( 'Client', 'tpcore' ),
-                'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
-                'condition' => [
-                    'tp_design_style' => 'layout-2'
-                ]
-            ]
-        );
-        $this->add_control(
-            'tp_about_client_title',
-            [
-                'label' => esc_html__( 'Client Title', 'tp-core' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-            ]
-        );
-        $this->add_control(
-            'tp_about_client_subtitle',
-            [
-                'label' => esc_html__( 'Client subtitle', 'tp-core' ),
-                'type' => \Elementor\Controls_Manager::TEXT,
-            ]
-        );
-        //client image
-        $this->add_control(
-            'tp_about_client_image',
-            [
-                'label' => esc_html__( 'Choose Image', 'tp-core' ),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        // client image size
-        $this->add_group_control(
-            Group_Control_Image_Size::get_type(),
-            [
-                'name' => 'tp_about_client_image_size',
-                'default' => 'full',
-                'exclude' => [
-                    'custom'
-                ]
-            ]
-        );
-        $this->end_controls_section();
+                $this->add_control(
+                    'tp_exp_title',
+                    [
+                        'label' => esc_html__( 'Exp Title', 'tp-core' ),
+                        'type' => \Elementor\Controls_Manager::TEXT,
+                    ]
+                );
+                $this->add_control(
+                    'tp_exp_number',
+                    [
+                        'label' => esc_html__( 'Exp number', 'tp-core' ),
+                        'type' => \Elementor\Controls_Manager::TEXT,
+                    ]
+                );
+                //exp image
+                $this->add_control(
+                    'tp_exp_image',
+                    [
+                        'label' => esc_html__( 'Choose Image', 'tp-core' ),
+                        'type' => \Elementor\Controls_Manager::MEDIA,
+                        'default' => [
+                            'url' => \Elementor\Utils::get_placeholder_image_src(),
+                        ],
+                    ]
+                );
+        
+                // client image size
+                $this->add_group_control(
+                    Group_Control_Image_Size::get_type(),
+                    [
+                        'name' => 'tp_about_client_image_size',
+                        'default' => 'full',
+                        'exclude' => [
+                            'custom'
+                        ]
+                    ]
+                );
+                $this->end_controls_section();
 
         // shape section
         $this->start_controls_section(
@@ -583,9 +585,143 @@ class TP_About extends Widget_Base {
 
         // list
         $this->start_controls_section(
-            'tp_about_list',
+            'tp_about_box_list_1',
                 [
-                    'label' => esc_html__( 'Info List', 'tpcore' ),
+                    'label' => esc_html__( 'About Box List', 'tpcore' ),
+                    'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
+                    'condition' => [
+                        'tp_design_style' => ['layout-1', 'layout-4']
+                    ]
+                ]
+            );
+            
+            $repeater = new \Elementor\Repeater();
+
+            
+        $repeater->add_control(
+            'tp_features_icon_type',
+            [
+                'label' => esc_html__('Select Icon Type', 'tpcore'),
+                'type' => \Elementor\Controls_Manager::SELECT,
+                'default' => 'icon',
+                'options' => [
+                    'image' => esc_html__('Image', 'tpcore'),
+                    'icon' => esc_html__('Icon', 'tpcore'),
+                    'svg' => esc_html__('SVG', 'tpcore'),
+                ],
+            ]
+        );
+
+        $repeater->add_control(
+            'tp_features_image',
+            [
+                'label' => esc_html__('Upload Icon Image', 'tpcore'),
+                'type' => Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => Utils::get_placeholder_image_src(),
+                ],
+                'condition' => [
+                    'tp_features_icon_type' => 'image'
+                ]
+
+            ]
+        );
+
+        if (tp_is_elementor_version('<', '2.6.0')) {
+            $repeater->add_control(
+                'tp_features_icon',
+                [
+                    'show_label' => false,
+                    'type' => Controls_Manager::ICON,
+                    'label_block' => true,
+                    'default' => 'fa fa-star',
+                    'condition' => [
+                        'tp_features_icon_type' => 'icon'
+                    ]
+                ]
+            );
+        } else {
+            $repeater->add_control(
+                'tp_features_selected_icon',
+                [
+                    'show_label' => false,
+                    'type' => Controls_Manager::ICONS,
+                    'fa4compatibility' => 'icon',
+                    'label_block' => true,
+                    'default' => [
+                        'value' => 'fas fa-star',
+                        'library' => 'solid',
+                    ],
+                    'condition' => [
+                        'tp_features_icon_type' => 'icon'
+                    ]
+                ]
+            );
+        }
+
+        $repeater->add_control(
+            'tp_features_icon_svg',
+            [
+                'show_label' => false,
+                'type' => Controls_Manager::TEXTAREA,
+                'label_block' => true,
+                'placeholder' => esc_html__('SVG Code Here', 'tp-core'),
+                'condition' => [
+                    'tp_features_icon_type' => 'svg',
+                ]
+            ]
+        );
+
+            
+            $repeater->add_control(
+            'tp_about_box_list_title',
+                [
+                'label'   => esc_html__( 'Title', 'tpcore' ),
+                'type'        => \Elementor\Controls_Manager::TEXT,
+                'default'     => esc_html__( 'Default-value', 'tpcore' ),
+                'label_block' => true,
+                ]
+            );
+
+             $this->add_control(
+            'tp_about_box_list_image',
+            [
+                'label' => esc_html__( 'Choose Image', 'tp-core' ),
+                'type' => \Elementor\Controls_Manager::MEDIA,
+                'default' => [
+                    'url' => \Elementor\Utils::get_placeholder_image_src(),
+                ],
+            ]
+        );
+            
+            $this->add_control(
+                'tp_about_box_list',
+                [
+                'label'       => esc_html__( 'Features List', 'tpcore' ),
+                'type'        => \Elementor\Controls_Manager::REPEATER,
+                'fields'      => $repeater->get_controls(),
+                'default'     => [
+                    [
+                    'tp_about_box_list_title'   => esc_html__( ' Mistakes To Avoid to dum Auam. ', 'tpcore' ),
+                    ],
+                    [
+                    'tp_about_box_list_title'   => esc_html__( 'Avoid to the dumy mistakes', 'tpcore' ),
+                    ],
+                    [
+                    'tp_about_box_list_title'   => esc_html__( ' Your Startup industry stan', 'tpcore' ),
+                    ],
+                ],
+                'title_field' => '{{{ tp_about_box_list_title }}}',
+                ]
+            );
+            $this->end_controls_section();
+
+
+        // list
+        $this->start_controls_section(
+            'tp_about_simple_list',
+                [
+                    'label' => esc_html__( 'About Simple List', 'tpcore' ),
                     'tab'   => \Elementor\Controls_Manager::TAB_CONTENT,
                     'condition' => [
                         'tp_design_style' => ['layout-1', 'layout-4']
@@ -626,6 +762,7 @@ class TP_About extends Widget_Base {
                 ]
             );
             $this->end_controls_section();
+
         // tp_video
         $this->start_controls_section(
             'tp_video',
@@ -1190,93 +1327,177 @@ class TP_About extends Widget_Base {
         $tp_shape_image_alt4 = get_post_meta($settings["tp_shape_image_4"]["id"], "_wp_attachment_image_alt", true);
     }
 
+    if ( !empty($settings['tp_exp_image']['url']) ) {
+        $tp_exp_image = !empty($settings['tp_exp_image']['id']) ? wp_get_attachment_image_url( $settings['tp_exp_image']['id'], $settings['shape_image_size_size']) : $settings['tp_exp_image']['url'];
+        $tp_exp_image_alt = get_post_meta($settings["tp_exp_image"]["id"], "_wp_attachment_image_alt", true);
+    }
+
     // Link
     if ('2' == $settings['tp_btn_link_type']) {
         $this->add_render_attribute('tp-button-arg', 'href', get_permalink($settings['tp_btn_page_link']));
         $this->add_render_attribute('tp-button-arg', 'target', '_self');
         $this->add_render_attribute('tp-button-arg', 'rel', 'nofollow');
-        $this->add_render_attribute('tp-button-arg', 'class', 'tp-btn tp-el-btn');
+        $this->add_render_attribute('tp-button-arg', 'class', 'tp-btn-black tp-el-btn');
     } else {
         if ( ! empty( $settings['tp_btn_link']['url'] ) ) {
             $this->add_link_attributes( 'tp-button-arg', $settings['tp_btn_link'] );
-            $this->add_render_attribute('tp-button-arg', 'class', 'tp-btn tp-el-btn');
+            $this->add_render_attribute('tp-button-arg', 'class', 'tp-btn-black tp-el-btn');
         }
     }
 
     $this->add_render_attribute('title_args', 'class', 'tp-section-title tp-el-title');
 ?>
 <!-- about area start -->
-<section class="tp-about-area p-relative pt-130 pb-210 tp-el-section">
-    <?php if(!empty($tp_shape_image)) : ?>
-    <div class="tp-about-shape">
-        <img src="<?php echo esc_url($tp_shape_image); ?>" alt="<?php echo esc_attr($tp_shape_image_alt); ?>">
+ <div class="tp-about-area p-relative pt-120 pb-120 tp-el-section">
+
+    <div class="tp-about-shape-5 d-none d-xl-block">
+        <img src="assets/img/about/shape-3-1.png" alt="">
     </div>
-    <?php endif; ?>
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-                <div class="tp-about-thumb-wrapper p-relative wow fadeInLeft" data-wow-duration="1s"
-                    data-wow-delay=".3s">
-                    <?php if(!empty($tp_image)) : ?>
-                    <div class="main">
-                        <img src="<?php echo esc_url($tp_image); ?>" alt="<?php echo esc_attr($tp_image_alt); ?>">
+
+            <!-- Right Images -->
+            <div class="col-xl-6 col-lg-6 wow tpfadeLeft" data-wow-duration=".9s" data-wow-delay=".5s">
+                <div class="tp-about-right-box text-end tp-about-right-wrap p-relative">
+
+                    <div class="tp-about-2-thumb-text text-start d-none d-lg-block"
+                    style="background-image: url(<?php echo esc_url($tp_exp_image); ?>)">
+                        <h6>
+                            <i class="purecounter" data-purecounter-duration="1" data-purecounter-end="<?php echo esc_attr($settings['tp_exp_number']); ?>">0</i>+
+                        </h6>
+                        <span><?php echo tp_kses($settings['tp_exp_title']); ?></span>
                     </div>
-                    <?php endif; ?>
-                    <?php if(!empty($tp_image_2)) : ?>
-                    <img class="shape-1" src="<?php echo esc_url($tp_image_2); ?>"
-                        alt="<?php echo esc_attr($tp_image_alt_2); ?>">
+
+                    <?php if (!empty($tp_image)) : ?>
+                        <div class="tp-about-main-thumb">
+                            <img src="<?php echo esc_url($tp_image); ?>" alt="<?php echo esc_attr($tp_image_alt); ?>">
+                        </div>
                     <?php endif; ?>
 
-                    <?php if(!empty($tp_shape_image2)) : ?>
-                    <img class="shape-2" src="<?php echo esc_url($tp_shape_image2); ?>" alt="<?php echo esc_attr($tp_shape_image_alt2); ?>">
+                    <?php if (!empty($tp_image_2)) : ?>
+                        <div class="tp-about-thumb-sm">
+                            <img src="<?php echo esc_url($tp_image_2); ?>" alt="<?php echo esc_attr($tp_image_alt_2); ?>">
+                        </div>
                     <?php endif; ?>
-                    <?php if(!empty($tp_shape_image3)) : ?>
-                    <img class="shape-3" src="<?php echo esc_url($tp_shape_image3); ?>" alt="<?php echo esc_attr($tp_shape_image_alt3); ?>">
+
+                    <?php if (!empty($tp_shape_switch)) : ?>
+
+                        <?php if (!empty($tp_shape_image)) : ?>
+                            <div class="tp-about-shape-2 d-none d-lg-block">
+                                <img src="<?php echo esc_url($tp_shape_image); ?>" alt="<?php echo esc_attr($tp_shape_image_alt); ?>">
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($tp_shape_image2)) : ?>
+                            <div class="tp-about-shape-6 d-none d-xl-block">
+                                <img src="<?php echo esc_url($tp_shape_image2); ?>" alt="<?php echo esc_attr($tp_shape_image_alt2); ?>">
+                            </div>
+                        <?php endif; ?>
+
                     <?php endif; ?>
-                    <?php if(!empty($tp_shape_image4)) : ?>
-                    <img class="shape-4" src="<?php echo esc_url($tp_shape_image4); ?>" alt="<?php echo esc_attr($tp_shape_image_alt4); ?>">
-                    <?php endif; ?>
+
                 </div>
             </div>
-            <div class="col-lg-6">
-                <div class="tp-about-wrapper">
-                    <?php if ( !empty($settings['tp_about_section_title_show']) ) : ?>
-                    <div class="tp-about-title-wrapper">
-                        <?php if ( !empty($settings['tp_about_sub_title']) ) : ?>
-                        <span class="tp-section-title-pre tp-el-sub-title"><?php echo tp_kses( $settings['tp_about_sub_title'] ); ?></span>
-                        <?php endif; ?>
-                        <?php if ( !empty($settings['tp_about_title' ]) ) :
-                                printf( '<%1$s %2$s>%3$s</%1$s>',
-                                tag_escape( $settings['tp_about_title_tag'] ),
-                                $this->get_render_attribute_string( 'title_args' ),
-                                tp_kses( $settings['tp_about_title' ] )
+
+            <!-- Left Content -->
+            <div class="col-xl-6 col-lg-6 wow tpfadeRight" data-wow-duration=".9s" data-wow-delay=".7s">
+                <div class="tp-about-left-box tp-about-ml">
+
+                    <?php if (!empty($settings['tp_about_section_title_show'])) : ?>
+                        <div class="tp-about-section-box mb-15">
+
+                            <?php if (!empty($settings['tp_about_sub_title'])) : ?>
+                                <span class="tp-section-subtitle tp-el-sub-title">
+                                    <?php echo tp_kses($settings['tp_about_sub_title']); ?>
+                                </span>
+                            <?php endif; ?>
+
+                            <?php if (!empty($settings['tp_about_title'])) :
+                                printf(
+                                    '<%1$s %2$s>%3$s</%1$s>',
+                                    tag_escape($settings['tp_about_title_tag']),
+                                    $this->get_render_attribute_string('title_args'),
+                                    tp_kses($settings['tp_about_title'])
                                 );
                             endif; ?>
+
+                        </div>
+
+                        <div class="tp-about-text">
+                            <?php if (!empty($settings['tp_about_description'])) : ?>
+                                <p class="pb-15 tp-el-des"><?php echo tp_kses($settings['tp_about_description']); ?></p>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Icon Boxes -->
+                    <div class="tp-about-icon-wrap p-relative d-flex justify-content-between mb-40">
+
+                        <div class="tp-about-icon-shape d-none d-xl-block">
+                            <img src="<?php echo get_template_directory_uri();  ?>/assets/img/about/shape-1-6.png" alt="">
+                        </div>
+
+                        <?php foreach ($settings['tp_about_box_list'] as $item) : ?>
+                            <div class="tp-about-icon-box d-flex align-items-center mb-20">
+                                <div class="tp-about-icon icon-color">
+                                    <?php if($item['tp_features_icon_type'] == 'icon') : ?>
+                                <?php if (!empty($item['tp_features_icon']) || !empty($item['tp_features_selected_icon']['value'])) : ?>
+                                <?php tp_render_icon($item, 'tp_features_icon', 'tp_features_selected_icon'); ?>
+                                <?php endif; ?>
+                                <?php elseif( $item['tp_features_icon_type'] == 'image' ) : ?>
+                                <?php if (!empty($item['tp_features_image']['url'])): ?>
+                                <img src="<?php echo $item['tp_features_image']['url']; ?>"
+                                    alt="<?php echo get_post_meta(attachment_url_to_postid($item['tp_features_image']['url']), '_wp_attachment_image_alt', true); ?>">
+                                <?php endif; ?>
+                                <?php else : ?>
+                                <?php if (!empty($item['tp_features_icon_svg'])): ?>
+                                <?php echo $item['tp_features_icon_svg']; ?>
+                                <?php endif; ?>
+                                <?php endif; ?>
+                                </div>
+                                <div class="tp-about-icon-text">
+                                    <h5><?php echo tp_kses($item['tp_about_box_list_title']); ?></h5>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+
                     </div>
-                    <?php endif; ?>
-                    <?php if ( !empty($settings['tp_about_description']) ) : ?>
-                    <p class="tp-el-des"><?php echo tp_kses( $settings['tp_about_description'] ); ?></p>
-                    <?php endif; ?>
-                    <div class="tp-about-wrapper-list">
+
+                    <!-- About List -->
+                    <div class="tp-about-list mb-45">
                         <ul>
-                            <?php foreach ($settings['tp_about_list_list_1'] as $key => $item) : ?>
-                            <li class="tp-el-list"><span><i class="fa-regular fa-circle"></i></span>
-                                <?php echo tp_kses($item['tp_about_list_title_1']); ?>
-                            </li>
+                            <?php foreach ($settings['tp_about_list_list_1'] as $item) : ?>
+                                <li><i class="fa-light fa-badge-check"></i><?php echo tp_kses($item['tp_about_list_title_1']); ?></li>
                             <?php endforeach; ?>
                         </ul>
-                    </div> 
-
-                    <?php if ( !empty($settings['tp_btn_text']) ) : ?>
-                    <div class="tp-about-btn">
-                        <a <?php echo $this->get_render_attribute_string( 'tp-button-arg' ); ?>><?php echo tp_kses($settings['tp_btn_text']); ?><span><i class="fa-regular fa-plus"></i></span></a>
                     </div>
-                    <?php endif; ?>
+
+                    <!-- BUTTON SECTION (FINAL FIXED VERSION) -->
+                    <div class="tp-about-button-box d-flex align-items-center">
+
+                        <!-- Dynamic Main Button -->
+                        <?php if (!empty($settings['tp_btn_text'])) : ?>
+                            <a <?php echo $this->get_render_attribute_string('tp-button-arg'); ?>>
+                                <span><?php echo tp_kses($settings['tp_btn_text']); ?></span>
+                            </a>
+                        <?php endif; ?>
+
+                        
+
+                        
+
+                    </div>
+
                 </div>
             </div>
+
         </div>
     </div>
-</section>
+</div>
+
+
+
 <!-- about area end -->
 
 <?php endif; 
